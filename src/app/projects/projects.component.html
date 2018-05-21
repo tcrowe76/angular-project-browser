@@ -1,18 +1,62 @@
 <h2>All Projects</h2>
-<ul>
-	<li *ngFor="let p of projects">
-		{{p.name | uppercase}} Details
-		<h3>poop</h3>
-		{{p.id}}
-		{{p.target}}
-		<br>
-	</li>
-</ul>
-
-
-<div>
-	<label>Project name:
-		<input [(ngModel)]="p.name" placeholder="enter name">
-	</label>
+<div class="row">
+	<div class="column">
+		<ul class="projects text">
+			<li *ngFor="let p of projects" [class.selected]="p === selectedProject" (click)="onSelect(p)">
+				<div>
+					<span class="badge">{{p.id}}</span><span class="emphasis">{{p.name | uppercase}}</span>		
+				</div>
+				<div>Target: {{p.target}}</div>			
+				<div></div>
+				<div class="row">
+					<div class="column">Stage: {{p.stage}}</div>
+					<div class="column">Active: {{p.active}}</div>
+				</div>
+				<div class="row">
+					<div class="column">Started: {{p.startDate}}</div>
+					<div class="column">Lead: {{p.projectLead}}</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="column">
+		<div *ngIf="selectedProject">
+			<h2>Edit project details: {{selectedProject.name}}</h2>
+			<div class="row">
+				<label>id: {{selectedProject.id}}</label>
+			</div>
+			<div class="row">
+				<label>name: <input [(ngModel)]="selectedProject.name" placeholder="enter name">
+				</label>
+			</div>
+			<div class="row">
+				<label>target: <input [(ngModel)]="selectedProject.target" placeholder="enter target"> 
+				</label>
+			</div>
+			<div class="row">
+				<label>stage: <input list="stages" [(ngModel)]="selectedProject.stage" placeholder="enter stage"> 
+				</label>
+				<datalist id="stages">
+					<option value="Discovery">
+					<option value="Research">
+					<option value="Preclinical">
+					<option value="Development">
+				</datalist>
+			</div>
+			<div class="row">
+				<label>lead: <input [(ngModel)]="selectedProject.projectLead" placeholder="enter project lead"> 
+				</label>
+			</div>
+			<div class="row">
+				<label>started: <input [(ngModel)]="selectedProject.startDate" placeholder="enter date"> 
+				</label>
+			</div>
+			<div class="row">
+				<label>active: <input [(ngModel)]="selectedProject.active" placeholder="enter 1 or 0"> 
+				</label>
+			</div>
+		</div>
+	</div>
 </div>
-<div><span>Project Lead: </span>{{p.projectLead}}</div>
+
+

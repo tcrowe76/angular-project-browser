@@ -9,12 +9,16 @@ import {PROJECTS} from '../mock-projects';
 })
 export class ProjectsComponent implements OnInit {
 
-	projects: Project[] = PROJECTS;
-
+	projects = PROJECTS;
+	selectedProject: Project;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelect(project: Project): void {
+  	this.selectedProject = project;
   }
 
 }

@@ -18,5 +18,14 @@ export const PROJECTS: Project[] = [
 		startDate: '3/1/2019',
 		active: true,
 		stage: 'Research'
+	},
+	{
+		id: 3,
+		name:'JTX-03',
+		target: 'POOP',
+		projectLead: 'Frederick Fartbag',
+		startDate: '3/1/2019',
+		active: true,
+		stage: 'Research'
 	}
 ];
